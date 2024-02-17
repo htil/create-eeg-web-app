@@ -6,13 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/rickshaw.min.css" />
     <script type="text/javascript" src="js/danfo.js"></script>
+    <script type="text/javascript" src="js/chart.js"></script>
     <title>EEG Playground</title>
   </head>
   <body>
-    <div id="graph" style="width: 100%; height: 90vh; overflow: hidden; background-color: aquamarine;"></div>
+    <div id="graph" style="width: 100%; height: 90vh; overflow: hidden; background-color: grey; display: block;"></div>
+    <div id="scatter" style="width: 100%; height: 90vh; overflow: hidden; background-color: whitesmoke; display: none;">
+      <canvas id="chart1"></canvas>
+    </div>
 
-    
+    <input type="text" id="class" name="class" value="class1">
     <button id="bluetooth">BLE</button>
+    <button id="is_recording">Record</button>
+    <button id="remove_data">Remove Data</button>
+    <!--<button id="add_data">Add Data</button>-->
+
     <script src="js/d3js.min.js"></script>
     <script src="js/rickshaw.min.js"></script>
     <script type="text/javascript" src="js/BCIDevice.build.js"></script>

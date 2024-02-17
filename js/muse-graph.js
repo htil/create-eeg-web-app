@@ -15,11 +15,13 @@ export const MuseGraph = class {
             renderer: 'line',
             series: MuseSeries(max_data, time_interval),
         });
+
+        // 2,3,16,17 is hardcoded. BCIDevice needs to be updated to return actual channel labels based on device
         this.isChannelDataReady = {2: false, 3:false, 16: false, 17: false}
         this.recent_data_temp = {}
         this.is_active = true
         this.is_local_recording = false
-        this.data = new Data("muse", {0: "TP9", 1: "TP10", 2:"AF8", 3:"AF7"}, this.sample_freq)
+        //this.data = new Data("muse", {0: "TP9", 1: "TP10", 2:"AF8", 3:"AF7"}, this.sample_freq)
         
         /*
         let updateWidth = () => {
@@ -60,10 +62,10 @@ export const MuseGraph = class {
 
     get_formatted_data(i) {
         return {
-            TP9: this.recent_data_temp[2][i] + (this.height * .1),  //F8
-            TP10: this.recent_data_temp[3][i]+ (this.height * .2),  //F7
-            AF8: this.recent_data_temp[16][i] + (this.height * .3),  //TP9
-            AF7: this.recent_data_temp[17][i] + (this.height * .4)   // TP10
+            TP9: this.recent_data_temp[2][i] + (this.height * .05),  //F8
+            TP10: this.recent_data_temp[3][i]+ (this.height * .1),  //F7
+            AF8: this.recent_data_temp[16][i] + (this.height * .2),  //TP9
+            AF7: this.recent_data_temp[17][i] + (this.height * .3)   // TP10
         }
     }
 
@@ -85,7 +87,7 @@ export const MuseGraph = class {
 
             // record data session
             if(this.is_local_recording) {
-                this.data.add_data(this.recent_data_temp)
+                //this.data.add_data(this.recent_data_temp)
             }
 
             // Flush old data
